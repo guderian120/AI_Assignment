@@ -47,19 +47,19 @@ While less severe than many real-world datasets, this imbalance still provides a
 
 **Class Distribution**:
 
-![Class Distribution — Bar chart and pie chart showing moderate imbalance](class_distribution.png)
+![Class Distribution — Bar chart and pie chart showing moderate imbalance](images/class_distribution.png)
 
 **Feature Distributions**: Sensor readings exhibit normal distributions around their operating ranges (Temperature: 60-100°C, Pressure: 90-120 units).
 
-![Feature Distributions — Histograms of numerical features](feature_distributions.png)
+![Feature Distributions — Histograms of numerical features](images/feature_distributions.png)
 
 **Correlation Analysis**: A correlation heatmap revealed moderate correlations among sensor readings, with no extreme multicollinearity issues.
 
-![Correlation Heatmap — Heatmap of all numerical features](correlation_heatmap.png)
+![Correlation Heatmap — Heatmap of all numerical features](images/correlation_heatmap.png)
 
 **Outlier Handling**: Extreme values were detected in sensor readings. Winsorization (capping at 1st/99th percentiles) was applied.
 
-![Outlier Detection — Box plots of key features](outlier_boxplots.png)
+![Outlier Detection — Box plots of key features](images/outlier_boxplots.png)
 
 **Preprocessing Steps**:
 - Outliers capped via Winsorization
@@ -78,7 +78,7 @@ Three resampling strategies were implemented and compared:
 | **Undersampling** | RandomUnderSampler | Randomly removes majority-class samples |
 | **Hybrid** | SMOTETomek | SMOTE + Tomek Links boundary cleaning |
 
-![Sampling Strategy Comparison — Accuracy and Macro F1 across strategies](sampling_comparison.png)
+![Sampling Strategy Comparison — Accuracy and Macro F1 across strategies](images/sampling_comparison.png)
 
 **Key Finding**: Even with moderate imbalance, SMOTE and SMOTETomek improved Macro F1-score by better balancing precision and recall across both classes, particularly improving recall for the failure class.
 
@@ -94,15 +94,15 @@ Three feature reduction techniques were applied:
 | **RFE** | Wrapper | Recursive elimination using Random Forest importance |
 | **PCA** | Extraction | Orthogonal transformation (8 components retaining ~95% variance) |
 
-![Chi-Square Feature Scores — Features ranked by Chi-Square score](chi2_feature_scores.png)
+![Chi-Square Feature Scores — Features ranked by Chi-Square score](images/chi2_feature_scores.png)
 
-![RFE Feature Ranking — All features ranked (green = selected)](rfe_feature_ranking.png)
+![RFE Feature Ranking — All features ranked (green = selected)](images/rfe_feature_ranking.png)
 
-![PCA Cumulative Variance — Elbow plot showing components needed for 95% variance](pca_variance.png)
+![PCA Cumulative Variance — Elbow plot showing components needed for 95% variance](images/pca_variance.png)
 
 **Comparison**:
 
-![Feature Selection Comparison — Accuracy and F1 across methods](feature_selection_comparison.png)
+![Feature Selection Comparison — Accuracy and F1 across methods](images/feature_selection_comparison.png)
 
 **Selected Feature Set**: RFE-selected features (5 features: Temperature, Vibration, Edge_Processing_Time, Fuzzy_PID_Output, Maintenance_Status_encoded) were chosen as the primary set due to best downstream model performance and maintained interpretability. Notably, both Chi-Square and RFE selected the same 5 features, validating their importance.
 
@@ -127,7 +127,7 @@ Each model was evaluated on: **Accuracy**, **Precision (macro)**, **Recall (macr
 
 ### 4.1 Model Comparison
 
-![Model Comparison — Grouped bar charts of F1 and Accuracy by model and sampling](model_comparison.png)
+![Model Comparison — Grouped bar charts of F1 and Accuracy by model and sampling](images/model_comparison.png)
 
 ### 4.2 Best Model — Detailed Evaluation
 
@@ -135,15 +135,15 @@ The best-performing pipeline was identified by highest Macro F1-Score.
 
 **Confusion Matrix**:
 
-![Confusion Matrix — Best model's per-class prediction breakdown](best_model_confusion_matrix.png)
+![Confusion Matrix — Best model's per-class prediction breakdown](images/best_model_confusion_matrix.png)
 
 **Feature Importance**:
 
-![Feature Importance — Top features from the best tree-based model](feature_importance.png)
+![Feature Importance — Top features from the best tree-based model](images/feature_importance.png)
 
 **Precision vs. Recall Trade-off**:
 
-![Precision vs Recall — Scatter plot by class](precision_recall_tradeoff.png)
+![Precision vs Recall — Scatter plot by class](images/precision_recall_tradeoff.png)
 
 ---
 
