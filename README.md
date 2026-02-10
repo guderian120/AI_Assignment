@@ -1,12 +1,12 @@
-# 🛡️ IoT Network Intrusion Detection on Imbalanced Data
+# 🏭 IIoT Edge Computing Predictive Maintenance
 
-A machine learning capstone project that builds an end-to-end Intrusion Detection System (IDS) for IoT networks, tackling the challenge of **severe class imbalance** across multiple attack types.
+A machine learning capstone project that builds an end-to-end predictive maintenance system for Industrial IoT (IIoT) edge computing environments, tackling the challenge of **class imbalance** in failure prediction.
 
 ## 📋 Project Overview
 
-IoT devices are increasingly vulnerable to cyber attacks. This project uses the [IoT Intrusion Detection Dataset](https://www.kaggle.com/datasets/subhajournal/iotintrusion) (1M+ network flow records, 46 features) to:
+Industrial equipment failures can lead to costly downtime and safety hazards. This project uses the [IIoT Edge Computing Dataset](https://www.kaggle.com/datasets/ziya07/iiot-edge-computing-dataset) (1,000 sensor readings, 9 features) to:
 
-1. **Explore & preprocess** IoT traffic data with visualizations
+1. **Explore & preprocess** sensor data with visualizations
 2. **Handle class imbalance** using SMOTE, undersampling, and hybrid methods
 3. **Select optimal features** via Chi-Square, RFE, and PCA
 4. **Train & evaluate** multiple ML models (Random Forest, XGBoost, Logistic Regression, Decision Tree)
@@ -15,10 +15,9 @@ IoT devices are increasingly vulnerable to cyber attacks. This project uses the 
 ## 📁 Repository Structure
 
 ```
-AI_Assingment/
+AI_Assignment/
 ├── README.md                              # This file
 ├── requirements.txt                       # Python dependencies
-├── overview.md                            # Slide-by-slide guide for PPT generation
 ├── Technical_Report.md                    # Concise technical report with visualizations
 ├── 1_EDA_and_Preprocessing.ipynb          # Tasks 1-2: Dataset selection, EDA, preprocessing
 ├── 2_Class_Imbalance_Handling.ipynb       # Task 3: SMOTE, undersampling, SMOTETomek
@@ -56,7 +55,7 @@ jupyter notebook
 
 Then open and run sequentially:
 
-1. **`1_EDA_and_Preprocessing.ipynb`** → Outputs: `processed_iot_intrusion.csv`
+1. **`1_EDA_and_Preprocessing.ipynb`** → Outputs: `processed_iiot_edge.csv`
 2. **`2_Class_Imbalance_Handling.ipynb`** → Outputs: `train_smote.csv`, `train_smotetomek.csv`, `test_set.csv`
 3. **`3_Feature_Engineering_Selection.ipynb`** → Outputs: `selected_features.json`
 4. **`4_Model_Training_Evaluation.ipynb`** → Outputs: Final results and visualizations
@@ -67,11 +66,11 @@ The dataset is **automatically downloaded** from Kaggle via `kagglehub` when you
 
 | Property | Value |
 |---|---|
-| **Source** | [Kaggle — subhajournal/iotintrusion](https://www.kaggle.com/datasets/subhajournal/iotintrusion) |
-| **Records** | 1,048,575 |
-| **Features** | 46 numerical + 1 categorical target |
-| **Target** | `label` — multi-class (BenignTraffic, DDoS, DoS, etc.) |
-| **Imbalance** | Severe — majority classes 100x+ larger than minority classes |
+| **Source** | [Kaggle — ziya07/iiot-edge-computing-dataset](https://www.kaggle.com/datasets/ziya07/iiot-edge-computing-dataset) |
+| **Records** | 1,000 sensor readings |
+| **Features** | 9 features (6 numerical + 3 categorical) |
+| **Target** | `Predicted_Failure` — binary (0=No Failure, 1=Failure) |
+| **Imbalance** | Moderate — 1.2:1 ratio (54.6% vs 45.4%) |
 
 ## 🔬 Methodology
 
@@ -91,8 +90,8 @@ Raw Data → EDA & Preprocessing → Class Imbalance Handling → Feature Select
 ### Feature Selection Methods
 | Method | Type | Features Selected |
 |---|---|---|
-| Chi-Square | Filter | Top 20 by statistical dependence |
-| RFE | Wrapper | Top 20 by Random Forest importance |
+| Chi-Square | Filter | Top 5 by statistical dependence |
+| RFE | Wrapper | Top 5 by Random Forest importance |
 | PCA | Extraction | Components retaining 95% variance |
 
 ### Models Evaluated
@@ -109,8 +108,8 @@ Raw Data → EDA & Preprocessing → Class Imbalance Handling → Feature Select
 
 ## 📈 Key Results
 
-- **Best pipeline**: Tree-based model + SMOTETomek + RFE features
-- **SMOTE/Hybrid sampling** significantly improves minority-class recall
+- **Best pipeline**: Tree-based model + SMOTE/SMOTETomek + RFE features
+- **SMOTE/Hybrid sampling** improves recall for failure class, critical for avoiding missed failures
 - **RFE feature selection** outperforms Chi-Square and PCA for downstream classification
 - **Tree-based models** (Random Forest, XGBoost) outperform linear models on this dataset
 
@@ -118,7 +117,7 @@ Raw Data → EDA & Preprocessing → Class Imbalance Handling → Feature Select
 
 1. **Technical Report**: [`Technical_Report.md`](Technical_Report.md) — structured as a mini research paper
 2. **Code**: 4 Jupyter Notebooks with documented, reproducible code
-3. **Presentation Guide**: [`overview.md`](overview.md) — slide-by-slide content for PPT generation
+3. **Presentation**: Can be generated from the technical report and notebook visualizations
 
 ## ⚙️ Tech Stack
 
@@ -127,6 +126,14 @@ Raw Data → EDA & Preprocessing → Class Imbalance Handling → Feature Select
 - **Data**: pandas, NumPy
 - **Visualization**: matplotlib, seaborn
 - **Dataset Access**: kagglehub
+
+## 💡 Dataset Selection Rationale
+
+This dataset was selected to provide a manageable scope for the capstone project while still demonstrating all required machine learning techniques:
+- **Moderate imbalance** (1.2:1) allows demonstration of resampling techniques
+- **Real-world relevance** in industrial predictive maintenance
+- **Appropriate size** (1,000 samples) for thorough analysis within assignment timeframe
+- **Clear domain context** with interpretable features
 
 ## 📄 License
 

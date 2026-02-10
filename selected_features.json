@@ -1,0 +1,17 @@
+{
+  "chi2_features": [
+    "Temperature",
+    "Vibration",
+    "Edge_Processing_Time",
+    "Fuzzy_PID_Output",
+    "Maintenance_Status_encoded"
+  ],
+  "rfe_features": [
+    "Temperature",
+    "Vibration",
+    "Edge_Processing_Time",
+    "Fuzzy_PID_Output",
+    "Maintenance_Status_encoded"
+  ],
+  "pca_n_components": 8
+}
