@@ -1,0 +1,17 @@
+# Large data files
+*.csv
+processed_iot_intrusion.csv
+train_smote.csv
+train_smotetomek.csv
+test_set.csv
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
